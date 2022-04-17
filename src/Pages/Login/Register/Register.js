@@ -24,10 +24,14 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
     const navigate = useNavigate();
     const [updateProfile, updating, udateError] = useUpdateProfile(auth);
+
     const handleRegister = async (e) => {
         e.preventDefault();
+        await updateProfile(displayName);
+        navigate('/home');
     }
     const navigateLogin = () => {
         navigate('/login');

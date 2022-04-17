@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { async } from '@firebase/util';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 const Register = () => {
-    const [name, setName] = useState('');
+    const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleNameBlur = (e) => {
-        setName(e.target.value);
+        setDisplayName(e.target.value);
     }
     const handleEmailBlur = (e) => {
         setEmail(e.target.value);
@@ -23,12 +22,9 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, udateError] = useUpdateProfile(auth);
     const handleRegister = async (e) => {
         e.preventDefault();
-        // const name = e.target.value.name;
-        /*     const email = e.target.value.email;
-            const password = e.target.value.password;
-            createUserWithEmailAndPassword(email, password); */
     }
     return (
         <div className='w-50 mx-auto mt-2'>

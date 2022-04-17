@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 
 const Login = () => {
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleEmailBlur = (e) => {
@@ -15,7 +17,7 @@ const Login = () => {
         setPassword(e.target.value);
     }
 
-    const handleLogin = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
     }
     const [
@@ -27,14 +29,15 @@ const Login = () => {
 
     const navigate = useNavigate();
     if (user) {
-        navigate('/home');
+        navigate(from, { replace: true });
     }
     const navigateRegister = (e) => {
         navigate('/register')
     }
+
     return (
         <div className='w-50 mx-auto mt-2'>
-            <Form onSubmit={handleLogin}>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control onBlur={handleEmailBlur} type="email" placeholder="Enter email" />
                 </Form.Group>

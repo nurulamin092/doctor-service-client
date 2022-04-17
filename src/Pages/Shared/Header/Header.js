@@ -22,7 +22,9 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link as={CustomLink} to="/register">Register</Nav.Link>
-                        <Nav.Link as={CustomLink} to="/login">Login</Nav.Link>
+                        {
+                            user ? <Button onClick={handleSignOut}>SignOut</Button> : <Nav.Link as={CustomLink} to="/login">Login</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>

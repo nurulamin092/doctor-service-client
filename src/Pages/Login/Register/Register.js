@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import CustomLink from '../../Shared/CustomLink/CustomLink';
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,9 +24,13 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const navigate = useNavigate();
     const [updateProfile, updating, udateError] = useUpdateProfile(auth);
     const handleRegister = async (e) => {
         e.preventDefault();
+    }
+    const navigateLogin = () => {
+        navigate('/login');
     }
     return (
         <div className='w-50 mx-auto mt-2'>
@@ -46,6 +52,7 @@ const Register = () => {
                     Register
                 </Button>
             </Form>
+            <p className='d-flex'><span className='mx-2'>Already Have an Account?</span> <CustomLink to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</CustomLink></p>
         </div>
     );
 };

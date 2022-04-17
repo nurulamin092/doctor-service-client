@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import CustomLink from '../../Shared/CustomLink/CustomLink';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -28,6 +29,9 @@ const Login = () => {
     if (user) {
         navigate('/home');
     }
+    const navigateRegister = (e) => {
+        navigate('/register')
+    }
     return (
         <div className='w-50 mx-auto mt-2'>
             <Form onSubmit={handleLogin}>
@@ -45,6 +49,8 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            <p className='d-flex'><span className='mx-2'>Don’t have an account?</span> <CustomLink to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</CustomLink></p>
+
         </div>
     );
 };

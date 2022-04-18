@@ -13,7 +13,6 @@ npm start
 
 # This live Site Link
 Open [https://doctor-service-provider.web.app/](https://doctor-service-provider.web.app/) to view it in your browser.
-<!-- Open [http://localhost:3000](http://localhost:3000) to view it in your browser. -->
 
 ### This project we use Libraries
 # 1 React-Bootstrap

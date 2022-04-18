@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Loading from '../../Shared/Loading/Loading';
+import { toast } from 'react-toastify';
 const Register = () => {
     const [agree, setAgree] = useState(false);
     const [displayName, setDisplayName] = useState('');
@@ -26,15 +27,17 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const navigate = useNavigate();
     const [updateProfile, updating, udateError] = useUpdateProfile(auth);
 
     const handleRegister = async (e) => {
         e.preventDefault();
+
         await createUserWithEmailAndPassword(email, password)
         await updateProfile(displayName);
+        toast('send email verification ');
         navigate('/home');
     }
     const navigateLogin = () => {

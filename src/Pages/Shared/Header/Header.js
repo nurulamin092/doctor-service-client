@@ -19,11 +19,9 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Brand as={CustomLink} to="/home">Home</Navbar.Brand>
                     <Navbar.Brand as={CustomLink} to="/services">Services</Navbar.Brand>
+                    <Navbar.Brand as={CustomLink} to="/blogs">Blog</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link as={CustomLink} to="/blogs ">Blog</Nav.Link>
-                        </Nav>
                         <Nav className="me-auto">
                             <Nav.Link as={CustomLink} to="/about ">About</Nav.Link>
                         </Nav>
@@ -37,7 +35,6 @@ const Header = () => {
                 </Container>
             </Navbar >
         </>
-
     );
 };
 

@@ -4,7 +4,6 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
-// import logo from '../../../images/logo/'
 const Header = () => {
     const [user] = useAuthState(auth);
     const handleSignOut = () => {

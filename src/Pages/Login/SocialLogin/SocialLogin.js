@@ -7,12 +7,12 @@ import Loading from '../../Shared/Loading/Loading';
 import { useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const navigate = useNavigate();
-    const [signInWithGoogle, googleLoading] = useSignInWithGoogle(auth);
-    const [signInWIthFacebook, facebookLoading] = useSignInWithFacebook(auth);
+    const [signInWithGoogle, googleUser, googleLoading] = useSignInWithGoogle(auth);
+    const [signInWIthFacebook, facebookUser, facebookLoading] = useSignInWithFacebook(auth);
     if (googleLoading || facebookLoading) {
         return <Loading></Loading>
     }
-    if (signInWithGoogle || signInWIthFacebook) {
+    if (googleUser || facebookUser) {
         navigate('/home')
     }
     return (

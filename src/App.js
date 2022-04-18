@@ -6,7 +6,6 @@ import Home from './Pages/Home/Home/Home';
 import Register from './Pages/Login/Register/Register';
 import Header from './Pages/Shared/Header/Header';
 import Login from './Pages/Login/Login/Login';
-import Blog from './Pages/Home/Blog/Blog';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import Footer from './Pages/Shared/Footer/Footer';
 import Services from './Pages/Home/Services/Services';

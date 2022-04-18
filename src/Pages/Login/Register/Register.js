@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -30,26 +30,28 @@ const Register = () => {
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const navigate = useNavigate();
-    const [updateProfile, updating, udateError] = useUpdateProfile(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const handleRegister = async (e) => {
         e.preventDefault();
-
+        console.log(displayName);
         await createUserWithEmailAndPassword(email, password)
         await updateProfile(displayName);
+
         toast('send email verification ');
         navigate('/home');
+    }
+
+    if (loading || updating) {
+        return <Loading></Loading>
     }
     const navigateLogin = () => {
         navigate('/login');
     }
-    if (loading || updating) {
-        return <Loading></Loading>
-    }
     return (
         <div className='w-50 mx-auto mt-2'>
             <Form onSubmit={handleRegister}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Control onBlur={handleNameBlur} type="text" placeholder="Enter Name" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -62,7 +64,6 @@ const Register = () => {
                 <Form.Group className={`ps-2 ${agree ? '' : 'text-danger'} mb-3`} controlId="formBasicCheckbox">
                     <Form.Check onClick={() => setAgree(!agree)} type="checkbox" label="Accept Terms and Condition" />
                 </Form.Group>
-
                 <Button
                     disabled={!agree}
                     variant="primary" type="submit">

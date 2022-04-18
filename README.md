@@ -1,19 +1,27 @@
-# Getting Started with Create React App
+# Welcome to the Dental Service Provider Website
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+npx create-react-app doctor-service-provider-website
+cd doctor-service-provider-website
+npm start
 
-Welcome to the Dental Service Provider Website
 
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [https://doctor-service-provider.web.app](https://doctor-service-provider.web.app/) to view it in your browser.
+Open [http://localhost:3000/](https://doctor-service-provider.web.app/) to view it in your browser.
 <!-- Open [http://localhost:3000](http://localhost:3000) to view it in your browser. -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### This project we use Libraries
+# 1 React-Bootstrap
+# 2 React-router
+# 3 react-firebase-hooks
+# 4 react-toastify
+
+
 
 ### `npm test`
 
@@ -28,7 +36,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+See the section about [deployment](https://doctor-service-provider.web.app/) for more information.
 
 ### `npm run eject`
 

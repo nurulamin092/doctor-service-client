@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import About from './Pages/About/About';
 import './App.css';
 import PageNotFount from './Pages/Shared/PageNotFount/PageNotFount';
 import Home from './Pages/Home/Home/Home';
@@ -11,6 +10,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import Services from './Pages/Home/Services/Services';
 import Checkout from './Pages/Home/Checkout/Checkout';
 import Blogs from './Pages/Home/Blogs/Blogs';
+import About from './Pages/Home/About/About';
 
 function App() {
   return (

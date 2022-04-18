@@ -1,9 +1,10 @@
 import { async } from '@firebase/util';
 import React, { useState } from 'react';
-import { Button, Form, ToastContainer } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 import Loading from '../../Shared/Loading/Loading';
@@ -27,6 +28,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     if (user) {
         navigate(from, { replace: true });
@@ -66,9 +68,9 @@ const Login = () => {
                     Login
                 </Button>
             </Form>
+            <p className='d-flex'><span className='mx-2'>Don’t have an account?</span> <CustomLink to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</CustomLink></p>
             <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
 
-            <p className='d-flex'><span className='mx-2'>Don’t have an account?</span> <CustomLink to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</CustomLink></p>
             <SocialLogin></SocialLogin>
             <ToastContainer />
         </div>

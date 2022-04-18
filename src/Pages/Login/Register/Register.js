@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 import { useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Loading from '../../Shared/Loading/Loading';
 const Register = () => {
     const [agree, setAgree] = useState(false);
     const [displayName, setDisplayName] = useState('');
@@ -38,6 +39,9 @@ const Register = () => {
     }
     const navigateLogin = () => {
         navigate('/login');
+    }
+    if (loading || updating) {
+        return <Loading></Loading>
     }
     return (
         <div className='w-50 mx-auto mt-2'>

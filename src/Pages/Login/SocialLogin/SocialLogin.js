@@ -3,9 +3,13 @@ import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks
 import auth from '../../../firebase.init';
 import google from '../../../images/social/google.png'
 import facebook from '../../../images/social/facebook.png'
+import Loading from '../../Shared/Loading/Loading';
 const SocialLogin = () => {
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
-    const [signInWIthFacebook] = useSignInWithFacebook(auth);
+    const [signInWithGoogle, googleLoading] = useSignInWithGoogle(auth);
+    const [signInWIthFacebook, facebookLoading] = useSignInWithFacebook(auth);
+    if (googleLoading || facebookLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <button

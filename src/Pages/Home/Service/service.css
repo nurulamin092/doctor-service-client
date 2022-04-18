@@ -1,0 +1,21 @@
+.service {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.service-btn {
+    width: 100%;
+    background: #0b089a;
+    border: none;
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    padding: 10px;
+    color: whitesmoke;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

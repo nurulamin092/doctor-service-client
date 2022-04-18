@@ -4,8 +4,10 @@ import auth from '../../../firebase.init';
 import google from '../../../images/social/google.png'
 import facebook from '../../../images/social/facebook.png'
 import Loading from '../../Shared/Loading/Loading';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
     const [signInWithGoogle, googleUser, googleLoading] = useSignInWithGoogle(auth);
     const [signInWIthFacebook, facebookUser, facebookLoading] = useSignInWithFacebook(auth);
@@ -14,6 +16,9 @@ const SocialLogin = () => {
     }
     if (googleUser || facebookUser) {
         navigate('/home')
+    }
+    if (googleUser || facebookUser) {
+        navigate(from, { replace: true });
     }
     return (
         <div>

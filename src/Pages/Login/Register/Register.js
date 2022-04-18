@@ -5,6 +5,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 import { useNavigate } from 'react-router-dom';
 const Register = () => {
+    const [agree, setAgree] = useState(false);
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,6 +31,7 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
+        await createUserWithEmailAndPassword(email, password)
         await updateProfile(displayName);
         navigate('/home');
     }
@@ -48,10 +50,13 @@ const Register = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+
+                <Form.Group className={`ps-2 ${agree ? '' : 'text-danger'} mb-3`} controlId="formBasicCheckbox">
+                    <Form.Check onClick={() => setAgree(!agree)} type="checkbox" label="Accept Terms and Condition" />
                 </Form.Group>
-                <Button onClick={() => createUserWithEmailAndPassword(email, password)}
+
+                <Button
+                    disabled={!agree}
                     variant="primary" type="submit">
                     Register
                 </Button>

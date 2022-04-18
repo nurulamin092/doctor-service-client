@@ -4,6 +4,7 @@ const Home = () => {
         <div>
             <h1 className='text -primary'>This Header</h1>
         </div>
+
     );
 };
 

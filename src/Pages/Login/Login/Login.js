@@ -61,9 +61,6 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Control onBlur={handlePasswordBlur} type="password" placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
                 <Button onClick={() => signInWithEmailAndPassword(email, password)}
                     variant="primary" type="submit">
                     Login

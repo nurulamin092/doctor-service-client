@@ -4,6 +4,7 @@ import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import CustomLink from '../../Shared/CustomLink/CustomLink';
 import { useNavigate } from 'react-router-dom';
+import SocialLogin from '../SocialLogin/SocialLogin';
 const Register = () => {
     const [agree, setAgree] = useState(false);
     const [displayName, setDisplayName] = useState('');
@@ -62,6 +63,7 @@ const Register = () => {
                 </Button>
             </Form>
             <p className='d-flex'><span className='mx-2'>Already Have an Account?</span> <CustomLink to='/login' className='text-danger pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</CustomLink></p>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

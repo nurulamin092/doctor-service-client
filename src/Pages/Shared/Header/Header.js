@@ -4,7 +4,7 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import CustomLink from '../CustomLink/CustomLink';
-
+import logo from '../../../images/logo/logo.png'
 const Header = () => {
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
@@ -13,6 +13,9 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="primary">
             <Container>
+                <Navbar.Brand as={CustomLink} to="/">
+                    <img height={40} width={50} src={logo} alt="" />
+                </Navbar.Brand>
                 <Navbar.Brand as={CustomLink} to="/home">Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
